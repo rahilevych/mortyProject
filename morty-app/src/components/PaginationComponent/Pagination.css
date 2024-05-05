@@ -1,0 +1,6 @@
+.pagination {
+  font-size: 4rem;
+  display: flex;
+  flex-direction: row;
+  gap: 10rem;
+}
