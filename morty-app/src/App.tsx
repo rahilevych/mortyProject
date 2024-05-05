@@ -1,11 +1,8 @@
 import './App.css';
+import MainPage from './pages/MainPage/MainPage';
 
 function App() {
-  return (
-    <>
-      <h1>\555</h1>
-    </>
-  );
+  return <MainPage />;
 }
 
 export default App;
