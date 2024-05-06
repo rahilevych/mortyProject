@@ -1,20 +1,27 @@
-import './Pagination.css';
+import './Pagination.scss';
 import { FC } from 'react';
 
 interface IPagination {
-  clickLeftBtn: Function;
-  clickRightBtn: Function;
+  clickLeftBtn: () => void;
+  clickRightBtn: () => void;
+  page: number;
 }
 
-const Pagination: FC<IPagination> = ({ clickLeftBtn, clickRightBtn }) => {
+const Pagination: FC<IPagination> = ({ clickLeftBtn, clickRightBtn, page }) => {
   return (
     <div className='pagination'>
-      <div className='pagination__left' onClick={clickLeftBtn}>
+      <button
+        disabled={page === 1}
+        className='pagination__left'
+        onClick={clickLeftBtn}>
         <i className='ph ph-caret-left'></i>
-      </div>
-      <div className='pagination__right' onClick={clickRightBtn}>
+      </button>
+      <button
+        disabled={page === 42}
+        className='pagination__right'
+        onClick={clickRightBtn}>
         <i className='ph ph-caret-right'></i>
-      </div>
+      </button>
     </div>
   );
 };
