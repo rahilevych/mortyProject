@@ -4,16 +4,17 @@ import { APIData } from '../../../assets/Types';
 import Card from '../../components/CardComponent/Card';
 import Search from '../../components/SearchComponent/Search';
 import Pagination from '../../components/PaginationComponent/Pagination';
+import './MainPage.scss';
 
 const MainPage = () => {
   let [data, setData] = useState<null | APIData>();
   let [page, setPage] = useState<number>(1);
-
+  let [name, setName] = useState<string>('');
   console.log(data);
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        'https://rickandmortyapi.com/api/character/'
+        `https://rickandmortyapi.com/api/character/?page=${page}&name=${name}`
       );
       setData(response.data);
     } catch (error) {
@@ -21,26 +22,27 @@ const MainPage = () => {
     }
   };
   function clickLeftBtn(): void {
-    if (data && page && page != 1) {
-      setPage(page--);
-    }
+    setPage(page - 1);
   }
   function clickRightBtn(): void {
-    if (data && page && page < data?.results.length / 20) {
-      setPage(page++);
-    }
+    setPage(page + 1);
   }
+  function readInput() {}
 
   useEffect(() => {
     fetchData();
-  }, [page]);
+    console.log(page);
+  }, [page, name]);
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  };
   return (
     <div className='wrapper'>
       <div className='container'>
         <header className='header'>
           <div className='container'>
-            <Search />
+            <Search name={name} input={handleChange} />
           </div>
         </header>
         <main className='main'>
@@ -52,6 +54,7 @@ const MainPage = () => {
             <Pagination
               clickLeftBtn={clickLeftBtn}
               clickRightBtn={clickRightBtn}
+              page={page}
             />
           </div>
         </main>
