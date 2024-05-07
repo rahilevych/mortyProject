@@ -1,10 +1,13 @@
 import { FC } from 'react';
 import { Cards } from '../../../assets/Types';
 import './Card.scss';
+
 interface CardProps {
   data: Cards;
+
+  pressedCard: (id: number) => void;
 }
-const Card: FC<CardProps> = ({ data }) => {
+const Card: FC<CardProps> = ({ data, pressedCard }) => {
   return (
     <div className='flip-card'>
       <div className='flip-card-inner'>
@@ -13,7 +16,12 @@ const Card: FC<CardProps> = ({ data }) => {
         </div>
         <div className='flip-card-back'>
           <h1>{data.name}</h1>
-          <button>LEAR MORE</button>
+          <button
+            onClick={() => {
+              pressedCard(data?.id);
+            }}>
+            LEARN MORE
+          </button>
         </div>
       </div>
     </div>
