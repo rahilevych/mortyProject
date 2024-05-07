@@ -13,3 +13,6 @@ header {
   flex-wrap: wrap;
   gap: 2rem;
 }
+.wrapper {
+  position: relative;
+}

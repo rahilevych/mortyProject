@@ -1,3 +1,35 @@
-main {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.wrapper {
+    background-color: #f9eff4;
+    min-height: 100vh;
+    height: 100%;
+}
+header {
+    width: 100%;
+    background-color: rgb(168, 0, 78);
+}
+.main {
     display: flex;
+    margin-top: 5rem;
+    &__container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+    }
+    &__cards {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        height: 100%;
+    }
 }
