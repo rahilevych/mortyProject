@@ -1,14 +1,19 @@
 import { FC } from 'react';
 import './Search.scss';
 interface ISearch {
-  name: string;
+  //input: React.ChangeEventHandler<HTMLInputElement>;
   input: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-const Search: FC<ISearch> = ({ name, input }) => {
+const Search: FC<ISearch> = ({ input }) => {
   return (
     <div className='search'>
-      <input type='text' className='search__input' onChange={input} />
+      <input
+        type='text'
+        className='search__input'
+        placeholder='Search by name'
+        onChange={input}
+      />
     </div>
   );
 };
